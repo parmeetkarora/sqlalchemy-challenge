@@ -2,9 +2,12 @@ SQLAlchemy Challenge
 SQLAlchemy is a Python library that is designed to work with SQL databases. It provides a way to interact with databases using Python code, allowing you to perform various database operations such as querying, inserting, updating, and deleting data. SQLAlchemy helps bridge the differences among various SQL dialects, making it easier to work with different types of SQL databases like PostgreSQL, SQLite, MySQL, and others using a unified interface in Python.
 
 Summary
+
 ANALYZE AND EXPLORE CLIMATE DATA
 The code performs a series of SQLAlchemy queries and analyses to explore precipitation and temperature data from the provided database. I run this code in a Jupyter Notebook, ensuring that I have the necessary files in the correct directory. The code includes setting up the database connection, performing precipitation and station analyses, plotting results, and closing the database session.
+
 DESIGN CLIMATE APP
+
 •  Set Up Database Connection and Flask App:
 •	Connect to the SQLite database using SQLAlchemy.
 •	Reflect the tables using automap_base() to map the tables to classes.
