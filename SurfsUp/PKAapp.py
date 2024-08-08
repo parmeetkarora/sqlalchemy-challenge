@@ -9,6 +9,11 @@ import json
 from flask import Flask
 from sqlalchemy.orm import sessionmaker 
 from datetime import datetime
+
+#################################################
+# Database Setup
+#################################################
+
 app = Flask(__name__)
 
 @app.route('/data')
@@ -19,10 +24,6 @@ def get_data():
 os.chdir(os.path.dirname(__file__))
 
 
-
-#################################################
-# Database Setup
-#################################################
 # Create an engine
 engine = create_engine("sqlite:///Resources/hawaii.sqlite")
 
@@ -67,7 +68,7 @@ def welcome():
         f'Find min, max, and avg temperature from a certain date: /api/v1.0/<start>'
         f'Find min, max, and avg temperature for specified start and end date: /api/v1.0/<start>/<end>'
     )
-
+# for precipitation
 import datetime as dt
 @app.route('/api/v1.0/precipitation')
 def precipitation():
@@ -85,7 +86,7 @@ def precipitation():
 # Return a JSON list of the calculated values
     return jsonify(precipitation_data)
 
-
+# for stations
 @app.route('/api/v1.0/stations')
 def stations():
     # Create our session (link) from Python to the DB
@@ -100,7 +101,7 @@ def stations():
     return jsonify(station_dict)
 
 
-
+# For temps
 @app.route('/api/v1.0/tobs')
 def tobs():
     """Temperatures of the most active station"""
@@ -134,6 +135,8 @@ from sqlalchemy.orm import Session
 import re
 from datetime import datetime
 
+# For start date (search by putting date format e.g 2016-08-23 in place of <start>
+
 @app.route('/api/v1.0/<start>')
 def start(start):
     """Temperature data for Start date."""
@@ -158,7 +161,7 @@ def start(start):
         return jsonify(result_printout)
     else:
         return jsonify({'error': 'Start date not found in the dataset'})
-
+# For start and end date, again search by dates in right format
 @app.route('/api/v1.0/<start>/<end>')
 def temp_start_end(start, end):
     session = Session(engine)
